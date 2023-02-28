@@ -13,7 +13,7 @@ pipeline {
             steps {
                 echo 'Start Trigger to send name and age to slave'
                 script {
-                    def filePath = readFile "${WORKSPACE}/data.txt
+                    def filePath = readFile ${WORKSPACE}/data.txt
                     echo '${filePath}'
 
                 
