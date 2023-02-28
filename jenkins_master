@@ -12,10 +12,10 @@ pipeline {
         stage('Trigger the Slave Jobs') {
             steps {
                 echo 'Start Trigger to send name and age to slave'
-                echo '${env.WORKSPACE}'
                 script {
-                    def filePath = readFile ${WORKSPACE}/data.txt
-                    echo '${filePath}'
+                    def filePath = readFile(file: 'data.txt')
+                    def lines = filePath.readLines()
+                    build job: 'jenkins_slave', parameters: [string(name: 'NAME', value: lines.get(0), string(name: 'Ages', value: lines.get(1)]
               
                 }
                 
